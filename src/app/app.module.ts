@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,11 +10,13 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { MenuComponent } from './menu/menu.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'post', component: PostComponent },
+  { path: 'posts', component: PostComponent },
+  { path: 'users', component: UsersComponent },
   { path: '**', component: LoginComponent },
 ]
 
@@ -22,12 +26,16 @@ const routes: Routes = [
     LoginComponent,
     HomeComponent,
     PostComponent,
-    MenuComponent
+    MenuComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
