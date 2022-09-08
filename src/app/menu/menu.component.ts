@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiRestService } from '../api-rest.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  user = { id: 0, username: '',  role: ''};
+
+  username: String = ""; 
+
+  constructor(private rest: ApiRestService) { }
 
   ngOnInit(): void {
   }
