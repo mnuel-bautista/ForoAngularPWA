@@ -25,10 +25,11 @@ export class LoginComponent {
     this.rest.login(this.username, this.password).subscribe(
       response => {
         this.rest.setUser(response.user);
+        localStorage.setItem('token', response.token);
         this.router.navigate(["/home"]); 
         this.msg.success("Bienvenido"); 
       }, error => {
-        this.msg.error("jeje"); 
+        this.msg.error("Error en el nombre o contraseña", error.status); 
       }
     )
   }
