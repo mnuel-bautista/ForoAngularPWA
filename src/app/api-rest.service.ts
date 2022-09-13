@@ -33,9 +33,9 @@ export class ApiRestService {
   }
 
   getUser() {
-    this.user.id  = parseInt(localStorage.getItem('id') || '0'); 
-    this.user.username = localStorage.getItem('username') || '0'; 
-    this.user.role = localStorage.getItem('role') || ''; 
+    this.user.id = parseInt(localStorage.getItem('id') || '0');
+    this.user.username = localStorage.getItem('username') || '0';
+    this.user.role = localStorage.getItem('role') || '';
     return this.user;
   }
 
@@ -43,4 +43,18 @@ export class ApiRestService {
     return this.http.get<Login>(URL + '/login',
       { params: { username: user, password: pass } });
   }
+
+  getTopics(url: string) {
+    if (url == '') url = URL + "/topics"
+    const token = localStorage.getItem('token') || '';
+
+    return this.http.get<any>(url, { headers: { Authorization: token } })
+  }
+
+  postTopic(title: String) {
+    const token = localStorage.getItem('token') || '';
+
+    return this.http.post<any>(URL, { title: title }, { headers: { Authorization: token } })
+  }
+
 }

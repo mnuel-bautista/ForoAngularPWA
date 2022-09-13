@@ -11,12 +11,12 @@
                         <div class="input-group-text">
                             <i class="bi bi-bookmark-check"></i>
                         </div>
-                        <input type="text" class="form-control">
+                        <input [(ngModel)]="newTopic.title" type="text" class="form-control">
                     </div>
                 </div>
-                
+
                 <div class="card-footer">
-                    <button class="btn btn-success w-100">Guardar</button>
+                    <button (click)="addTopic();" class="btn btn-success w-100">Guardar</button>
                 </div>
             </div>
         </div>
@@ -27,17 +27,25 @@
             <thead>
                 <tr>
                     <th scope="row">Id</th>
-                    <th>Tema</th>   
+                    <th>Tema</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let topic of topics">
-                    <td>1</td>
-                    <td>Programación</td>
+                    <td>{{topic.id}}</td>
+                    <td>{{topic.title}}</td>
                     <th><button class="btn btn-danger float-end"><i class="bi bi-trash3"></i></button></th>
                 </tr>
             </tbody>
         </table>
+        <nav>
+            <ul class="pagination">
+                <ng-container *ngFor="let page of pages">
+                    <li class="page-item"><a (click)="readTopics(page.url);" class="page-link">{{page.label}}</a></li>
+                </ng-container>
+            </ul>
+        </nav>
+        <!-- fasdflasdjf -->
     </div>
 </div>
