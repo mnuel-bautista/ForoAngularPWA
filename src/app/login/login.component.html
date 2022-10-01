@@ -1,29 +1,26 @@
-<div class="container">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <i class="bi bi-person-circle"></i>
-                        </div>
-                        <input [(ngModel)]="username" type="text" class="form-control" placeholder="Nombre de usuario">
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="">
+        <div class="card" style="width: 24rem;">
+            <div class="card-header">
+                <span>Iniciar sesión</span>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <i class="bi bi-person-circle"></i>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-text">
-                            <i class="bi bi-key-fill"></i>
-                        </div>
-                        <input [(ngModel)]="password" type="password" class="form-control" placeholder="Contraseña">
-                    </div>
+                    <input [(ngModel)]="username" type="text" class="form-control" placeholder="Nombre de usuario">
                 </div>
-                <div class="card-footer">
-                    <button (click)="logIn()" class="btn btn-primary">Entrar</button>
+                <div class="input-group">
+                    <div class="input-group-text">
+                        <i class="bi bi-key-fill"></i>
+                    </div>
+                    <input [(ngModel)]="password" type="password" class="form-control" placeholder="Contraseña">
                 </div>
             </div>
+            <div class="card-footer">
+                <button (click)="logIn()" class="btn btn-primary w-100">Entrar</button>
+            </div>
         </div>
-        <div class="col"></div>
     </div>
 </div>

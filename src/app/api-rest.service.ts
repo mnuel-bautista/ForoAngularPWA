@@ -54,7 +54,21 @@ export class ApiRestService {
   postTopic(title: String) {
     const token = localStorage.getItem('token') || '';
 
-    return this.http.post<any>(URL, { title: title }, { headers: { Authorization: token } })
+    return this.http.post<any>(URL + "/topics", { title: title }, { headers: { Authorization: token } })
+  }
+
+  putTopic(topic: any) {
+    const token = localStorage.getItem('token') || ''; 
+    return this.http.put<any>(URL + '/topics/' + topic.topicId, { title: topic.title }, 
+      { headers: { Authorization: token }}
+    )
+  }
+
+  deleteTopic(topic: any) {
+    const token = localStorage.getItem('token') || ''; 
+    return this.http.delete<any>(URL + '/topics/' + topic.topicId, 
+      { headers: { Authorization: token }}
+    )
   }
 
 }

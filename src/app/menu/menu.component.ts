@@ -15,6 +15,9 @@ export class MenuComponent implements OnInit {
   constructor(private rest: ApiRestService) { }
 
   ngOnInit(): void {
+    this.rest.userObs$.subscribe(s =>{
+      this.user = s; 
+    });
   }
 
 }

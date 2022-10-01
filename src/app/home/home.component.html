@@ -26,26 +26,65 @@
         <table class="table table-dark table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="row">Id</th>
                     <th>Tema</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let topic of topics">
-                    <td>{{topic.id}}</td>
                     <td>{{topic.title}}</td>
-                    <th><button class="btn btn-danger float-end"><i class="bi bi-trash3"></i></button></th>
+                    <th>
+                        <button (click)="selectTmpTopic(topic);" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#editTopic"><i
+                                class="bi bi-pencil-square"></i></button>
+                        <button (click)="selectTmpTopic(topic);" data-bs-target="#deleteTopic" data-bs-toggle="modal" class="btn btn-danger float-end  me-2"><i
+                                class="bi bi-trash3"></i></button>
+                    </th>
                 </tr>
             </tbody>
         </table>
-        <nav>
+        <nav class="d-flex justify-content-center">
             <ul class="pagination">
                 <ng-container *ngFor="let page of pages">
-                    <li class="page-item"><a (click)="readTopics(page.url);" class="page-link">{{page.label}}</a></li>
+                    <li class="page-item"><button (click)="readTopics(page.url);" class="page-link">{{page.label}}</button></li>
                 </ng-container>
             </ul>
         </nav>
         <!-- fasdflasdjf -->
+    </div>
+</div>
+
+<div class="modal fade" id="editTopic" tabindex="-1" aria-labelledby="editTopic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar tema</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="topicTitle" class="form-label">Topic</label>
+                    <input [(ngModel)]="currentTopic.title" type="text" class="form-control" id="topicTitle">
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button (click)="updateTopics();" type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteTopic" tabindex="-1" aria-labelledby="deleteTopic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro de eliminar <b>{{currentTopic.title}}</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button (click)="deleteTopic();" type="button" class="btn btn-primary"  data-bs-dismiss="modal">Eliminar</button>
+            </div>
+        </div>
     </div>
 </div>

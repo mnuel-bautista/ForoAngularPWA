@@ -12,7 +12,7 @@ import { ApiRestService } from '../api-rest.service';
 })
 export class LoginComponent {
 
-  username: string = "admin";
+  username: string = "";
 
   password: string = "";
 
@@ -24,6 +24,7 @@ export class LoginComponent {
   public logIn(): void {
     this.rest.login(this.username, this.password).subscribe(
       response => {
+        console.log(response.user); 
         this.rest.setUser(response.user);
         localStorage.setItem('token', response.token);
         this.router.navigate(["/home"]); 
